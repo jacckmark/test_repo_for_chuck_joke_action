@@ -9,10 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: "12.X"
-        uses: jacckmark/chuck_norris_joke_action@master
+      - uses: jacckmark/chuck_norris_joke_action@master
         with:
           sendingEmailAddress: ${{secrets.SENDING_MAIL_ADDRESS}}
           sendingEmailPass: ${{secrets.SENDING_MAIL_PASSWORD}}
