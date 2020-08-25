@@ -3,17 +3,20 @@ name: Chuck Joke
 on: [push]
 
 jobs:
-  send_chuck_joke:
+  build:
     runs-on: ubuntu-latest
-    name: chuck_norris_joke
+
     steps:
       - uses: actions/checkout@v2
+        name: Use Node.js ${{ matrix.node-version }}
       - uses: jacckmark/chuck_norris_joke_action@master
+        name: use chuck_norris_joke_action
         with:
           sendingEmailAddress: ${{secrets.SENDING_MAIL_ADDRESS}}
           sendingEmailPass: ${{secrets.SENDING_MAIL_PASSWORD}}
           receivingEmailAddress: ${{secrets.RECEIVING_MAIL_ADDRESS}}
       - uses: actions/setup-node@v1
+        name: use actions/setup-node
         with:
           node-version: "12.X"
       - run: npm install
