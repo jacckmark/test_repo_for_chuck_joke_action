@@ -3,9 +3,9 @@ name: Chuck Joke
 on: [push]
 
 jobs:
-  build:
+  send_chuck_joke:
     runs-on: ubuntu-latest
-
+    name: chuck_norris_joke
     steps:
       - uses: actions/checkout@v2
       - uses: jacckmark/chuck_norris_joke_action@master
