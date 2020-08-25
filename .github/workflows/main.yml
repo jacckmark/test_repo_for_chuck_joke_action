@@ -9,17 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Use Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@v1
-          name: use actions/setup-node
-          with:
-          node-version: "12.X"
-      - run: npm install
       - uses: jacckmark/chuck_norris_joke_action@master
         name: use chuck_norris_joke_action
         with:
           sending-email-address: ${{secrets.SENDING_MAIL_ADDRESS}}
           sending-email-pass: ${{secrets.SENDING_MAIL_PASSWORD}}
           receiving-email-address: ${{secrets.RECEIVING_MAIL_ADDRESS}}
+      - uses: actions/setup-node@v1
+        name: use actions/setup-node
+        with:
+          node-version: "12.X"
+      - run: npm install
       - run: npm run build --if-present
         env:
           CI: true
