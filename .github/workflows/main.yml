@@ -1,6 +1,10 @@
 name: Chuck Joke
 
-on: [push]
+on:
+  pull_request_review_comment:
+    types: [created, edited]
+  issue_comment:
+    types: [created]
 
 jobs:
   build:
@@ -8,13 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        name: Use Node.js ${{ matrix.node-version }}
+        name: Use Node.js 12.X
       - run: npm install
       - uses: jacckmark/chuck_norris_joke_action@master
         name: use chuck_norris_joke_action
         with:
-          github-access-token: ${{secrets.GITHUB_ACCESS_TOKEN}}
-          translation-api-token: ${{secrets.TRANSLATION_API_TOKEN}}
+          githubAccessToken: ${{secrets.GIT_ACCESS_TOKEN}}
+          translationApiToken: ${{secrets.TRANSLATION_API_TOKEN}}
       - uses: actions/setup-node@v1
         name: use actions/setup-node
         with:
